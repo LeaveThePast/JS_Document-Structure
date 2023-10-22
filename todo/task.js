@@ -10,13 +10,15 @@ tasksElement.appendChild(taskListElement);
 tasksAddElement.addEventListener("click", (event) => {
     event.preventDefault();
 
-    if (tasksInputElement.value) {
+    const taskInputValue = tasksInputElement.value.trim();
+
+    if (taskInputValue) {
         const newTaskElement = document.createElement("div");
         newTaskElement.classList.add("task");
 
         const newTaskTitle = document.createElement("div");
         newTaskTitle.classList.add("task__title");
-        newTaskTitle.textContent = tasksInputElement.value;
+        newTaskTitle.textContent = taskInputValue;
         newTaskElement.appendChild(newTaskTitle);
 
         const removeTaskButton = document.createElement("a");
@@ -28,6 +30,7 @@ tasksAddElement.addEventListener("click", (event) => {
         tasksInputElement.value = "";
     }
 });
+
 
 tasksElement.addEventListener("click", (event) => {
     if (event.target.classList.contains("task__remove")) {
